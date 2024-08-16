@@ -35,6 +35,13 @@
                           </div>
                           <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
+                              <label for="shop" class="leading-7 text-sm text-gray-400">店名</label>
+                              <div class="w-full bg-gray-800 bg-opacity-40 rounded focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $owner->shop->name }}</div>
+                              <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+                          </div>
+                          <div class="p-2 w-1/2 mx-auto">
+                            <div class="relative">
                               <label for="password" class="leading-7 text-sm text-gray-400">パスワード</label>
                               <input type="password" id="password" name="password" required class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                               <x-input-error :messages="$errors->get('password')" class="mt-2" />
