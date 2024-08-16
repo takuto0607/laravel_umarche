@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\OwnersController;
+use App\Models\Owner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,13 @@ Route::get('/dashboard', function () {
 Route::resource('owners', OwnersController::class)
 ->middleware('auth:admin');
 
+Route::prefix('expired-owners')->middleware('auth:admin')->group(function () {
+    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])
+                ->name('expired-owners.index');
+
+    Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])
+                ->name('expired-owners.destroy');
+});
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
