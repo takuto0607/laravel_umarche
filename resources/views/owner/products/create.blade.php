@@ -37,6 +37,7 @@
                         <div class="relative">
                           <label for="quantity" class="leading-7 text-sm text-gray-400">初期在庫 ※必須</label>
                           <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                          <span class="text-sm">0～99の範囲で入力してください。</span>
                           <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                       </div>
