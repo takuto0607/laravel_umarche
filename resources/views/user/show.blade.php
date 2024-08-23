@@ -71,11 +71,10 @@
                       <div class="flex items-center">
                         <span class="mr-3">数量</span>
                         <div class="relative">
-                          <select class="rounded border border-gray-700 focus:ring-2 focus:ring-indigo-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-indigo-500 text-white pl-3 pr-10">
-                            <option>SM</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
+                          <select name="quantity" class="rounded border border-gray-700 focus:ring-2 focus:ring-indigo-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-indigo-500 text-white pl-3 pr-10">
+                            @for ($quantityNum = 1; $quantityNum <= $quantity; $quantityNum++)
+                              <option value="{{ $quantityNum }}" class="text-gray-700">{{ $quantityNum }}</option>
+                            @endfor
                           </select>
                         </div>
                       </div>
