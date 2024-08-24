@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Stock;
 use App\Models\PrimaryCategory;
 use App\Mail\TestMail;
+use App\Jobs\SendThanksMail;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,11 @@ class ItemController extends Controller
 
     public function index (Request $request)
     {
-        Mail::to('test@example.com')->send(new TestMail());
+        // 同期処理
+        // Mail::to('test@example.com')->send(new TestMail());
+
+        // 非同期処理
+        SendThanksMail::dispatch();
 
         $categories = PrimaryCategory::with('secondary')->get();
         $products = Product::availableItems()
