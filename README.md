@@ -78,6 +78,8 @@ storage/app/public/shopsフォルダを作成し画像を保存
 
 必要な場合は .env に stripe の情報を追記してください。
 
+（講座内で解説）
+
 ## section08の補足
 
 メールのテストとしてmailtrapを利用しています。
@@ -86,3 +88,10 @@ storage/app/public/shopsフォルダを作成し画像を保存
 
 （講座内で解説）
 
+メール処理には時間がかかるため、キューを使用
+
+必要な場合は、
+
+- php artisan queue:work
+
+でワーカーを立ち上げて動作確認するようにしてください。
