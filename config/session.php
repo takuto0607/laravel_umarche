@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    'driver' => env('SESSION_DRIVER', 'cookie'),
 
     /*
     |--------------------------------------------------------------------------
@@ -129,6 +129,16 @@ return [
     'cookie' => env(
         'SESSION_COOKIE',
         Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+    ),
+
+    'cookie_owner' => env(
+        'SESSION_COOKIE_OWNER',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session_owner'
+    ),
+
+    'cookie_admin' => env(
+        'SESSION_COOKIE_ADMIN',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session_admin'
     ),
 
     /*
