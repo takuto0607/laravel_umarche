@@ -1,48 +1,71 @@
 <x-guest-layout>
-    ユーザー用
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <h1 class="text-3xl font-bold tracking-wider text-gray-700 dark:text-gray-300">ログイン</h1>
 
-    <form method="POST" action="{{ route('user.login') }}">
-        @csrf
+    <div class="lg:flex mt-12">
+        <div class="basis-1/2 lg:mr-6 lg:p-8 lg:border lg:border-gray-300 lg:dark:border-gray-700">
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <h2 class="text-base font-bold text-gray-700 dark:text-gray-300">会員登録がお済のお客様</h2>
+        
+            <form method="POST" action="{{ route('user.login') }}" class="mt-4">
+                @csrf
+        
+                <!-- Email Address -->
+                <div>
+                    <x-input-label for="email" :value="__('Email')" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+        
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-input-label for="password" :value="__('Password')" />
+        
+                    <x-text-input id="password" class="block mt-1 w-full"
+                                    type="password"
+                                    name="password"
+                                    required autocomplete="current-password" />
+        
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+        
+                <!-- Remember Me -->
+                <div class="block mt-2">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                    </label>
+                </div>
+        
+                <div class="mt-4">
+                    <x-primary-button class="w-full flex justify-center items-center">
+                        {{ __('Log in') }}
+                    </x-primary-button>
+                </div>
+        
+        
+                <div class="mt-4">
+                    @if (Route::has('user.password.request'))
+                        <div class="text-center">
+                            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('user.password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        </div>
+                    @endif
+                </div>
+            </form>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('user.password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('user.password.request') }}">
-                    {{ __('Forgot your password?') }}
+        <div class="basis-1/2 mt-12 border-t pt-8 lg:ml-6 lg:mt-0 lg:p-8 lg:border border-gray-300 dark:border-gray-700">
+            <h2 class="text-base font-bold text-gray-700 dark:text-gray-300">会員登録がお済でないお客様</h2>
+            <div class="mt-4 text-sm text-gray-700 dark:text-gray-300">
+                <p>会員登録がお済でないお客様はこちらより新規会員登録へお進みください。</p>
+            </div>
+            <div class="mt-12 lg:mt-24">
+                <a href="{{ route('user.register') }}" class="w-full flex justify-center items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-sm text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150'">
+                    新規登録
                 </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            </div>
         </div>
-    </form>
+    </div>
 </x-guest-layout>
