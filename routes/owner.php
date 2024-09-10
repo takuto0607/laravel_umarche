@@ -26,14 +26,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('owner.welcome');
-// });
-
+// ログインが完了したらオーナー用のダッシュボードに遷移
 Route::get('/dashboard', function () {
     return view('owner.dashboard');
 })->middleware(['auth:owners', 'verified'])->name('dashboard');
 
+// 以下、ログイン後のオーナー用の画面処理
 Route::prefix('shops')->middleware('auth:owners')->group(function () {
     Route::get('index', [ShopController::class, 'index'])
                 ->name('shops.index');

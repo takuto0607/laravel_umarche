@@ -20,8 +20,10 @@
                 @include('layouts.admin-navigation')
             @elseif (request()->is('owner*'))
                 @include('layouts.owner-navigation')
-            @else
+            @elseif (request()->is('user*'))
                 @include('layouts.user-navigation')
+            @else
+                @include('layouts.top-navigation')
             @endif
 
             <!-- Page Heading -->
