@@ -2,3 +2,7 @@
   /* width: 600px; */
   height: 300px;
 }
+
+.top-swiper-button::after {
+  color: rgb(17 24 39);
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Top\TopPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('top.index');
+Route::get('/', [TopPageController::class, 'index'])
+->name('index');
+
+Route::prefix('items')->group(function () {
+  Route::get('index', [TopPageController::class, 'itemsIndex'])->name('items.index');
 });

@@ -1,3 +1,7 @@
+@props([
+    'categories'
+])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -23,7 +27,7 @@
             @elseif (request()->is('user*'))
                 @include('layouts.user-navigation')
             @else
-                @include('layouts.top-navigation')
+                @include('layouts.top-navigation', ['categories' => $categories])
             @endif
 
             <!-- Page Heading -->
