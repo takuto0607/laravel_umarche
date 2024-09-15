@@ -11,9 +11,9 @@ if ($type === 'products') {
 @endphp
 
 <div>
-  @if (empty($filename))
-      <img src="{{ asset('images/no_image.jpg') }}">
+  @if (file_exists($path . $filename))
+    <img src="{{ asset($path . $filename) }}">
   @else
-      <img src="{{ asset($path . $filename) }}">
+    <img src="{{ asset('images/no_image.jpg') }}">
   @endif
 </div>

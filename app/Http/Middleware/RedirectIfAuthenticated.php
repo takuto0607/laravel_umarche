@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
         // }
 
         if (Auth::guard(self::GUARD_USER)->check() && $request->routeIs('user.*')) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::USER_HOME);
         }
 
         if (Auth::guard(self::GUARD_OWNER)->check() && $request->routeIs('owner.*')) {

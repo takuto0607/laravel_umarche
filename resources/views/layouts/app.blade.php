@@ -1,3 +1,7 @@
+@props([
+    'categories'
+])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -20,8 +24,10 @@
                 @include('layouts.admin-navigation')
             @elseif (request()->is('owner*'))
                 @include('layouts.owner-navigation')
-            @else
+            @elseif (request()->is('user*'))
                 @include('layouts.user-navigation')
+            @else
+                @include('layouts.top-navigation', ['categories' => $categories])
             @endif
 
             <!-- Page Heading -->
