@@ -3,7 +3,7 @@
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
       商品一覧
     </h2>
-    <form method="get" action="{{ route('user.items.index') }}">
+    <form method="get" action="{{ route('top.items.index') }}">
       <div class="lg:flex lg:justify-around">
         <div class="lg:flex items-center">
           <select name="category" class="mb-2 lg:mb-0 lg:mr-2">
@@ -67,10 +67,15 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100">
+          @if (isset($keyword))
+            <div class="px-4 text-xl font-bold tracking-wider">
+              <p>「 {{ $keyword }} 」の検索結果</p>
+            </div>
+          @endif
           <div class="flex flex-wrap">
             @foreach ($products as $product)
             <div class="w-1/4 p-2 md:p-4">
-              <a href="{{ route('user.items.show', ['item' => $product->id]) }}">
+              <a href="{{ route('top.items.show', ['item' => $product->id]) }}">
                 <div class="border rounded-md p-2 md:p-4">
                   <x-thumbnail filename="{{$product->filename ?? ''}}" type="products" />
                   <div class="mt-4">
