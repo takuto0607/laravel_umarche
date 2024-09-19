@@ -49,13 +49,13 @@
             <div>
               @foreach ($categories as $category)
                   <div class="my-2">
-                    <a href="" class="font-medium text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
+                    <p class="font-medium text-sm text-gray-800 dark:text-gray-200 leading-tight">
                       {{ $category->name }}
-                    </a>
+                    </p>
                   </div>
                   @foreach ($category->secondary as $secondary)
-                  <div class="mb-1">
-                    <a href="" class="text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
+                  <div class="mb-1 pl-4">
+                    <a href="{{ route('top.items.index', ['category' => $secondary->id]) }}" class="text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
                       ・ {{ $secondary->name }}
                     </a>
                   </div>
@@ -88,7 +88,7 @@
               <div class="flex flex-wrap">
                 @foreach ($products as $product)
                 <div class="w-1/4 p-2 md:p-4">
-                  <a href="{{ route('user.items.show', ['item' => $product->id]) }}">
+                  <a href="{{ route('top.items.show', ['item' => $product->id]) }}">
                     <div class="border rounded-md p-2 md:p-4">
                       <x-thumbnail filename="{{$product->filename ?? ''}}" type="products" />
                       <div class="mt-4">
@@ -114,7 +114,7 @@
               <div class="flex flex-wrap">
                 @foreach ($recomends as $recomend)
                 <div class="w-1/4 p-2 md:p-4">
-                  <a href="{{ route('user.items.show', ['item' => $recomend->id]) }}">
+                  <a href="{{ route('top.items.show', ['item' => $recomend->id]) }}">
                     <div class="border rounded-md p-2 md:p-4">
                       <x-thumbnail filename="{{$recomend->filename ?? ''}}" type="products" />
                       <div class="mt-4">

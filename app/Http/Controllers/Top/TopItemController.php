@@ -1,24 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Top;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Stock;
 use App\Models\PrimaryCategory;
-use App\Mail\TestMail;
-use App\Jobs\SendThanksMail;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
-class ItemController extends Controller
+class TopItemController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:users');
-
         $this->middleware(function (Request $request, Closure $next) {
             $id = $request->route()->parameter('item');
 
@@ -37,12 +31,6 @@ class ItemController extends Controller
 
     public function index (Request $request)
     {
-        // 同期処理
-        // Mail::to('test@example.com')->send(new TestMail());
-
-        // 非同期処理
-        // SendThanksMail::dispatch();
-
         $categories = PrimaryCategory::with('secondary')->get();
         $products = Product::availableItems()
                             ->selectCategory($request->category ?? '0')
@@ -51,7 +39,7 @@ class ItemController extends Controller
                             ->paginate($request->pagination ?? 20);
         $keyword = $request->keyword;
     
-        return view('user.index', compact('products', 'categories', 'keyword'));
+        return view('top.items.index', compact('products', 'categories', 'keyword'));
     }
 
     public function show (string $id)
@@ -63,6 +51,6 @@ class ItemController extends Controller
             $quantity = 9;
         }
 
-        return view('user.show', compact('product', 'quantity'));
+        return view('top.items.show', compact('product', 'quantity'));
     }
 }

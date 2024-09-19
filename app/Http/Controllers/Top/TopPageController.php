@@ -38,16 +38,4 @@ class TopPageController extends Controller
 
         return view('top.index', compact('categories', 'products', 'recomends', 'shops'));
     }
-
-    public function itemsIndex (Request $request)
-    {
-        $categories = PrimaryCategory::with('secondary')->get();
-        $products = Product::availableItems()
-                            ->selectCategory($request->category ?? '0')
-                            ->searchKeyword($request->keyword)
-                            ->sortOrder($request->sort)
-                            ->paginate($request->pagination ?? 20);
-    
-        return view('top.items.index', compact('products', 'categories'));
-    }
 }

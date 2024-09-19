@@ -27,7 +27,11 @@
             @elseif (request()->is('user*'))
                 @include('layouts.user-navigation')
             @else
-                @include('layouts.top-navigation', ['categories' => $categories])
+                @if (isset($categories))
+                    @include('layouts.top-navigation', ['categories' => $categories])
+                @else
+                    @include('layouts.top-not-search-navigation')
+                @endif
             @endif
 
             <!-- Page Heading -->
