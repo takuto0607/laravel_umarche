@@ -25,4 +25,14 @@ class Common
     'later' => self::ORDER_LATER,
     'older' => self::ORDER_OLDER,
   ];
+
+  const DEFAULT_ITEM_NUM = 20;
+
+  const SELLING_DISABLED = 0;
+  const SELLING_ENABLED = 1;
+
+  CONST SELLING_FLG = [
+    'disabled' => self::SELLING_DISABLED,
+    'enabled' => self::SELLING_ENABLED,
+  ];
 }

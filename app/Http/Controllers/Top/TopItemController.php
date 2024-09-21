@@ -45,12 +45,7 @@ class TopItemController extends Controller
     public function show (string $id)
     {
         $product = Product::findOrFail($id);
-        $quantity = Stock::where('product_id', $product->id)->sum('quantity');
 
-        if ($quantity > 9) {
-            $quantity = 9;
-        }
-
-        return view('top.items.show', compact('product', 'quantity'));
+        return view('top.items.show', compact('product'));
     }
 }
