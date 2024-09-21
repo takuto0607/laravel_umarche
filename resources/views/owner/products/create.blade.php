@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-          {{ __('Dashboard') }}
+          商品登録
       </h2>
   </x-slot>
 
@@ -77,10 +77,14 @@
                           <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                       </div>
-                      <x-select-image :images="$images" name="image1" />
-                      <x-select-image :images="$images" name="image2" />
-                      <x-select-image :images="$images" name="image3" />
-                      <x-select-image :images="$images" name="image4" />
+                      <div class="p-2 w-1/2 mx-auto">
+                        <p class="leading-7 text-sm text-gray-400">商品画像 ※1枚以上選択してください</p>
+                        <x-input-error :messages="$errors->get('image1')" class="mt-2" />
+                        <x-select-image :images="$images" name="image1" required="required" />
+                        <x-select-image :images="$images" name="image2" />
+                        <x-select-image :images="$images" name="image3" />
+                        <x-select-image :images="$images" name="image4" />
+                      </div>
                       <div class="p-2 w-1/2 mx-auto">
                         <div class="relative flex justify-around">
                           <div>

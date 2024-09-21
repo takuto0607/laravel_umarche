@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'quantity' => 'required|integer|between:0,99',
             'shop_id' => 'required|exists:shops,id',
             'category' => 'required|exists:secondary_categories,id',
-            'image1' => 'nullable|exists:images,id',
+            'image1' => 'required|exists:images,id',
             'image2' => 'nullable|exists:images,id',
             'image3' => 'nullable|exists:images,id',
             'image4' => 'nullable|exists:images,id',

@@ -69,10 +69,10 @@
               店舗
             </h2>
             <div class="mt-2">
-              @foreach ($shops as $shop)
-              <div class="mb-1">
+              @foreach ($shopsAll as $shop)
+              <div class="mb-1 pl-4">
                 <a href="{{ route('top.shops.show', ['shop' => $shop->id]) }}" class="text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
-                  {{ $shop->name }}
+                  ・ {{ $shop->name }}
                 </a>
               </div>
               @endforeach

@@ -6,6 +6,7 @@
 
     $cImage = $currentImage ?? '';
     $cId = $currentId ?? '';
+    $required = $required ?? '';
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
@@ -42,10 +43,10 @@
   </div>
 </div>
 
-<div class="flex justify-around items-center mb-4">
+<div class="lg:flex lg:justify-between items-center mb-8 lg:mb-4">
   <a class="py-2 px-4 bg-gray-200 text-black" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>ファイルを選択</a>
-  <div class="w-1/4">
+  <div class="image-size mt-4 lg:mt-0">
     <img id="{{ $name }}_thumbnail" @if ($cImage) src="{{ asset('storage/products/' . $cImage) }}" @else src="" @endif>
   </div>
 </div>
-<input id="{{ $name }}_hidden" type="hidden" name="{{ $name }}" value="{{ $cId }}">
+<input id="{{ $name }}_hidden" type="hidden" name="{{ $name }}" value="{{ $cId }}" {{ $required }}>

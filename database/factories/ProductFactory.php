@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'price' => fake()->numberBetween(10, 100000),
             'is_selling' => fake()->numberBetween(0, 1),
             'sort_order' => fake()->randomNumber(),
-            'shop_id' => fake()->numberBetween(1, 2),
+            'shop_id' => fake()->numberBetween(1, 6),
             'secondary_category_id' => fake()->numberBetween(1, 6),
             'image1' => fake()->numberBetween(1, 6),
             'image2' => fake()->numberBetween(1, 6),
