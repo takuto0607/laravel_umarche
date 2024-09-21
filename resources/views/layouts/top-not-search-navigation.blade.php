@@ -17,6 +17,9 @@
                   <x-nav-link :href="route('top.items.index')" :active="request()->routeIs('top.items.index')">
                       商品一覧
                   </x-nav-link>
+                  <x-nav-link :href="route('top.shops.index')" :active="request()->routeIs('top.shops.index')">
+                      店舗一覧
+                  </x-nav-link>
               </div>
           </div>
 

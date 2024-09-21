@@ -71,7 +71,7 @@
             <div class="mt-2">
               @foreach ($shops as $shop)
               <div class="mb-1">
-                <a href="" class="text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
+                <a href="{{ route('top.shops.show', ['shop' => $shop->id]) }}" class="text-sm text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">
                   {{ $shop->name }}
                 </a>
               </div>
@@ -137,7 +137,7 @@
               <div class="flex flex-wrap">
                 @foreach ($shops as $shop)
                 <div class="w-1/4 p-2 md:p-4">
-                  <a href="{{ route('user.items.show', ['item' => $shop->id]) }}">
+                  <a href="{{ route('top.shops.show', ['shop' => $shop->id]) }}">
                     <div class="border rounded-md p-2 md:p-4">
                       <x-thumbnail filename="{{$shop->filename ?? ''}}" type="shops" />
                       <div class="mt-4">
@@ -150,7 +150,7 @@
               </div>
             </div>
             <div class="mt-1 text-right">
-              <a href="" class="text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">もっと見る＞</a>
+              <a href="{{ route('top.shops.index') }}" class="text-gray-800 dark:text-gray-200 dark:hover:text-gray-500 leading-tight">もっと見る＞</a>
             </div>
           </section>
         </div>
