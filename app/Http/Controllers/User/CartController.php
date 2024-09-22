@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Constants\Common;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Cart;
@@ -84,7 +85,7 @@ class CartController extends Controller
         foreach ($products as $product) {
             Stock::create([
                 'product_id' =>$product->id,
-                'type' => \Constant::PRODUCT_LIST['reduce'],
+                'type' => Common::PRODUCT_LIST['reduce'],
                 'quantity' => $product->pivot->quantity * -1
             ]);
         }
@@ -130,7 +131,7 @@ class CartController extends Controller
         foreach ($user->products as $product) {
             Stock::create([
                 'product_id' =>$product->id,
-                'type' => \Constant::PRODUCT_LIST['add'],
+                'type' => Common::PRODUCT_LIST['add'],
                 'quantity' => $product->pivot->quantity
             ]);
         }

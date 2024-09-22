@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Top;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Stock;
 use App\Models\PrimaryCategory;
 use Closure;
 use Illuminate\Http\Request;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Constants\Common;
 use App\Http\Controllers\Controller;
 use App\Models\Owner;
 use App\Models\Image;
@@ -45,16 +46,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Owner::findOrFail(Auth::id())->shop->product;
         $ownerInfo = Owner::with('shop.product.imageFirst')->where('id', Auth::id())->get();
-
-        // dd($ownerInfo);
-        // foreach ($ownerInfo as $owner) {
-        //     dd($owner->shop->product);
-        //     foreach ($owner->shop->product as $product) {
-        //         dd($product->imageFirst->filename);
-        //     }
-        // }
 
         return view('owner.products.index', compact('ownerInfo'));
     }
@@ -153,11 +145,11 @@ class ProductController extends Controller
                     $product->is_selling = $request->is_selling;
                     $product->save();
 
-                    if ($request->type === \Constant::PRODUCT_LIST['add']) {
+                    if ($request->type === Common::PRODUCT_LIST['add']) {
                         $newQuantity = $request->quantity;
                     }
 
-                    if ($request->type === \Constant::PRODUCT_LIST['reduce']) {
+                    if ($request->type === Common::PRODUCT_LIST['reduce']) {
                         $newQuantity = $request->quantity * -1;
                     }
     

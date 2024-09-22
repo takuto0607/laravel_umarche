@@ -36,12 +36,17 @@ class TopPageController extends Controller
                         ->limit(4)
                         ->get();
 
-        // 店舗一覧取得
+        // 店舗一覧取得（全件）
+        $shopsAll = Shop::select('id', 'name', 'filename')
+                    ->where('is_selling', Common::SELLING_FLG['enabled'])
+                    ->get();
+
+        // 店舗一覧取得（4件）
         $shops = Shop::select('id', 'name', 'filename')
                     ->where('is_selling', Common::SELLING_FLG['enabled'])
                     ->limit(4)
                     ->get();
 
-        return view('top.index', compact('categories', 'products', 'recomends', 'shops'));
+        return view('top.index', compact('categories', 'products', 'recomends', 'shopsAll', 'shops'));
     }
 }

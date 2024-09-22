@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Constants\Common;
 use App\Models\Shop;
 use App\Models\SecondaryCategory;
 use App\Models\Image;
@@ -92,23 +93,23 @@ class Product extends Model
 
     public function scopeSortOrder($query, $sortOrder)
     {
-        if ($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['recommend']) {
+        if ($sortOrder === null || $sortOrder === Common::SORT_ORDER['recommend']) {
             return $query->orderBy('sort_order', 'asc');
         }
 
-        if ($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['higherPrice']) {
+        if ($sortOrder === null || $sortOrder === Common::SORT_ORDER['higherPrice']) {
             return $query->orderBy('price', 'desc');
         }
 
-        if ($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['lowerPrice']) {
+        if ($sortOrder === null || $sortOrder === Common::SORT_ORDER['lowerPrice']) {
             return $query->orderBy('price', 'asc');
         }
 
-        if ($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['later']) {
+        if ($sortOrder === null || $sortOrder === Common::SORT_ORDER['later']) {
             return $query->orderBy('products.created_at', 'desc');
         }
 
-        if ($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['older']) {
+        if ($sortOrder === null || $sortOrder === Common::SORT_ORDER['older']) {
             return $query->orderBy('products.created_at', 'asc');
         }
     }

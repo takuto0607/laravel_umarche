@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-          {{ __('Dashboard') }}
+          商品情報 - 編集
       </h2>
   </x-slot>
 
@@ -96,10 +96,14 @@
                           <x-input-error :messages="$errors->get('category')" class="mt-2" />
                         </div>
                       </div>
-                      <x-select-image :images="$images" currentId="{{ $product->image1 }}" currentImage="{{ $product->imageFirst->filename ?? '' }}" name="image1" />
-                      <x-select-image :images="$images" currentId="{{ $product->image2 }}" currentImage="{{ $product->imageSecond->filename ?? '' }}" name="image2" />
-                      <x-select-image :images="$images" currentId="{{ $product->image3 }}" currentImage="{{ $product->imageThird->filename ?? '' }}" name="image3" />
-                      <x-select-image :images="$images" currentId="{{ $product->image4 }}" currentImage="{{ $product->imageFourth->filename ?? '' }}" name="image4" />
+                      <div class="p-2 w-1/2 mx-auto">
+                        <p class="leading-7 text-sm text-gray-400">商品画像</p>
+                        <x-input-error :messages="$errors->get('image1')" class="mt-2" />
+                        <x-select-image :images="$images" currentId="{{ $product->image1 }}" currentImage="{{ $product->imageFirst->filename ?? '' }}" name="image1" required="required" />
+                        <x-select-image :images="$images" currentId="{{ $product->image2 }}" currentImage="{{ $product->imageSecond->filename ?? '' }}" name="image2" />
+                        <x-select-image :images="$images" currentId="{{ $product->image3 }}" currentImage="{{ $product->imageThird->filename ?? '' }}" name="image3" />
+                        <x-select-image :images="$images" currentId="{{ $product->image4 }}" currentImage="{{ $product->imageFourth->filename ?? '' }}" name="image4" />
+                      </div>
                       <div class="p-2 w-1/2 mx-auto">
                         <div class="relative flex justify-around">
                           <div>

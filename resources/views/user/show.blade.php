@@ -16,37 +16,31 @@
                       <!-- Additional required wrapper -->
                       <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                          <!-- Slides -->
-                          @if ($product->imageFirst->filename !== null)
+                          <!-- スライド画像1枚目 -->
+                          @if (isset($product->imageFirst->filename))
                             <img src="{{ asset('storage/products/' . $product->imageFirst->filename) }}">
                           @else
-                            <img src="">
+                            <img src="{{ asset('images/no_image.jpg') }}">
                           @endif
                         </div>
-                        <div class="swiper-slide">
-                          <!-- Slides -->
-                          @if ($product->imageSecond->filename !== null)
+                        <!-- スライド画像2枚目 -->
+                        @if (isset($product->imageSecond->filename))
+                          <div class="swiper-slide">
                             <img src="{{ asset('storage/products/' . $product->imageSecond->filename) }}">
-                          @else
-                            <img src="">
-                          @endif
-                        </div>
-                        <div class="swiper-slide">
-                          <!-- Slides -->
-                          @if ($product->imageThird->filename !== null)
+                          </div>
+                        @endif
+                        <!-- スライド画像3枚目 -->
+                        @if (isset($product->imageThird->filename))
+                          <div class="swiper-slide">
                             <img src="{{ asset('storage/products/' . $product->imageThird->filename) }}">
-                          @else
-                            <img src="">
-                          @endif
-                        </div>
-                        <div class="swiper-slide">
-                          <!-- Slides -->
-                          @if ($product->imageFourth->filename !== null)
+                          </div>
+                        @endif
+                        <!-- スライド画像4枚目 -->
+                        @if (isset($product->imageFourth->filename))
+                          <div class="swiper-slide">
                             <img src="{{ asset('storage/products/' . $product->imageFourth->filename) }}">
-                          @else
-                            <img src="">
-                          @endif
-                        </div>
+                          </div>
+                        @endif
                       </div>
                       <!-- If we need pagination -->
                       <div class="swiper-pagination"></div>
