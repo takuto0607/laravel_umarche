@@ -45,7 +45,7 @@
                 </div>
         
         
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     @if (Route::has('user.password.request'))
                         <div class="text-center">
                             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('user.password.request') }}">
@@ -53,7 +53,7 @@
                             </a>
                         </div>
                     @endif
-                </div>
+                </div> --}}
             </form>
         </div>
         <div class="basis-1/2 mt-12 border-t pt-8 lg:ml-6 lg:mt-0 lg:p-8 lg:border border-gray-300 dark:border-gray-700">
